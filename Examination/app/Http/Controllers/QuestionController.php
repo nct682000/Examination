@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Question;
+use App\Models\Answer;
 use App\Models\Exam;
 
 class QuestionController extends Controller
@@ -26,6 +27,39 @@ class QuestionController extends Controller
             "updated_date" => date('Y-m-d H:i:s'),
             "exam" => $request->exam
         ]);
+
+        $answer1 = Answer::create([
+            "content" => $request->answer1,
+            "is_true" => $request->answerTrue=="1"?1:0,
+            "created_date" => date('Y-m-d H:i:s'),
+            "updated_date" => date('Y-m-d H:i:s'),
+            "question" => $question->id
+        ]);
+
+        $answer2 = Answer::create([
+            "content" => $request->answer2,
+            "is_true" => $request->answerTrue=="2"?1:0,
+            "created_date" => date('Y-m-d H:i:s'),
+            "updated_date" => date('Y-m-d H:i:s'),
+            "question" => $question->id
+        ]);
+
+        $answer3 = Answer::create([
+            "content" => $request->answer3,
+            "is_true" => $request->answerTrue=="3"?1:0,
+            "created_date" => date('Y-m-d H:i:s'),
+            "updated_date" => date('Y-m-d H:i:s'),
+            "question" => $question->id
+        ]);
+
+        $answer4 = Answer::create([
+            "content" => $request->answer4,
+            "is_true" => $request->answerTrue=="4"?1:0,
+            "created_date" => date('Y-m-d H:i:s'),
+            "updated_date" => date('Y-m-d H:i:s'),
+            "question" => $question->id
+        ]);
+        
 
         $exam = Exam::where("id", $request->exam)->first();
         $questions = Question::where("exam", $request->exam)->get();

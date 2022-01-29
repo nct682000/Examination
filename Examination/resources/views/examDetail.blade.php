@@ -46,6 +46,30 @@
 				<div class="form-group">
 					<label for="content" class="font-weight-bold">Câu hỏi</label>
 					<input type="text" name="content" id="content" class="form-control">
+					<fieldset id="answer-true" name="answer-true">
+						<div class="row">
+							<div class="col">
+							<input type="radio" value="1" name="answerTrue" checked>
+								<label for="answer1" class="font-weight-bold">Câu trả lời #1</label>
+								<input type="text" name="answer1" id="answer1" class="form-control">
+							</div>
+							<div class="col">
+								<input type="radio" value="2" name="answerTrue">
+								<label for="answer2" class="font-weight-bold">Câu trả lời #2</label>
+								<input type="text" name="answer2" id="answer2" class="form-control">
+							</div>
+							<div class="col">
+								<input type="radio" value="3" name="answerTrue">
+								<label for="answer3" class="font-weight-bold">Câu trả lời #3</label>
+								<input type="text" name="answer3" id="answer3" class="form-control">
+							</div>
+							<div class="col">
+								<input type="radio" value="4" name="answerTrue">
+								<label for="answer4" class="font-weight-bold">Câu trả lời #4</label>
+								<input type="text" name="answer4" id="answer4" class="form-control">
+							</div>
+						</div>
+					</fieldset>
 				</div>
 
 				<!-- EXAM -->
@@ -55,11 +79,32 @@
 					<button style="cursor: pointer;" type="submit" class="btn btn-primary font-weight-bold">THÊM CÂU HỎI</button>
 				</div>
 			</form>
-			@foreach($questions as $q)
-
-			<div>{{$q->content}}</div>
-
-			@endforeach			
+			<ol>
+				@foreach($questions as $q)
+					<div class="card" style="margin-top:20px">
+						<div class="card-header">
+							<li>{{$q->content}}</li>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">Câu trả lời</h5>
+							<p class="card-text">
+								<ol style="list-style-type:lower-alpha">
+									<div class="row">
+										@foreach($q->answer as $a)
+											@if($a->is_true == true)
+												<div class="col" style="color:green"><li>{{$a->content}}</li></div>
+											@else
+												<div class="col" style="color:red"><li>{{$a->content}}</li></div>
+											@endif
+										@endforeach	
+									</div>
+								</ol>
+							</p>
+							<a href="#" class="btn btn-primary">Chỉnh sửa</a>
+						</div>
+					</div>
+				@endforeach
+			</ol>
 		</div>
 	</div>
 

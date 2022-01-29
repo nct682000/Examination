@@ -49,7 +49,9 @@
 					        <a class="dropdown-item" href="#">Link 3</a>
 				        </div>
 				     </li>
-
+					 <li>
+						 ĐĂNG KÍ
+					</li>
 			  	</ul>
 			</nav>
 			@yield("content")

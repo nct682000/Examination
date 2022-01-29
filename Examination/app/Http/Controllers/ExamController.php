@@ -12,7 +12,7 @@ use App\Models\Question;
 class ExamController extends Controller
 {
     public function getAll(){
-        $exams = Exam::where("active", 1)->get();
+        $exams = Exam::all();
         return view("exams", compact("exams"));
     }
 
@@ -66,14 +66,14 @@ class ExamController extends Controller
     public function hiddenExam($id){
         Exam::where("id", $id)->update(array("active" => 0));
 
-        $exams = Exam::where("active", 1)->get();
+        $exams = Exam::all();
         return view("exams", compact("exams"));
     }
 
     public function activeExam($id){
         Exam::where("id", $id)->update(array("active" => 1));
 
-        $exams = Exam::where("active", 1)->get();
+        $exams = Exam::all();
         return view("exams", compact("exams"));
     }
 

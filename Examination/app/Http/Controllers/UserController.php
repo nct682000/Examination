@@ -38,37 +38,41 @@ class UserController extends Controller
 
         $passErr = "";
         $avatar = "";
+        $Err = "";
         if($request->file("upload") != null){
             $avatar = $request->upload->getClientOriginalName();
             $request->upload->move("images/", $avatar);
         }
-
-        if($request->password === $request->password_confirm){
-            $user = User::create([
-                "username" => $request->username,
-                "password" => Hash::make($request->password),
-                "first_name" => $request->first_name,
-                "last_name" => $request->last_name,
-                "mail" => $request->mail,
-                "phone" => $request->phone,
-                "birthday" => $request->birthday,
-                "gender" => $request->gender,
-                "student_number" => $request->student_number,
-                "avatar" => $avatar,
-                "role" => "User",
-                "active" => 1,
-                "last_login" => date('Y-m-d H:i:s'),
-                "is_login" => 0,
-                "created_date" => date('Y-m-d H:i:s'),
-                "updated_date" => date('Y-m-d H:i:s')
-            ]);
-        }else{
-            $passErr = "Mật khẩu không trùng khớp";
-            echo $passErr;
-            return view("register", compact("passErr"));
+        if(!User::where("username", $request->username)->get()) {
+            if($request->password === $request->password_confirm){
+                $user = User::create([
+                    "username" => $request->username,
+                    "password" => Hash::make($request->password),
+                    "first_name" => $request->first_name,
+                    "last_name" => $request->last_name,
+                    "mail" => $request->mail,
+                    "phone" => $request->phone,
+                    "birthday" => $request->birthday,
+                    "gender" => $request->gender,
+                    "student_number" => $request->student_number,
+                    "avatar" => $avatar,
+                    "role" => "User",
+                    "active" => 1,
+                    "last_login" => date('Y-m-d H:i:s'),
+                    "is_login" => 0,
+                    "created_date" => date('Y-m-d H:i:s'),
+                    "updated_date" => date('Y-m-d H:i:s')
+                ]);
+            }else{
+                $passErr = "Mật khẩu không trùng khớp";
+                echo $passErr;
+                return view("register", compact("passErr"));
+            }
+        } else {
+            $Err = "Tài khoản này đã tồn tại";
+            echo $Err;
+            return view("register", compact("Err"));
         }
-        
         return view("index");
     }
-
 }
