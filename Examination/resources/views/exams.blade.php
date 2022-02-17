@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 
-<h1 class="text-center text-primary font-weight-bold">KIỂM TRA</h1>
+<h1 class="text-center text-primary font-weight-bold">QUẢN LÝ DANH SÁCH ĐỀ THI</h1>
 	<br>
 	<div class="row container-fluid">
 		@foreach ($exams as $e)

@@ -65,4 +65,23 @@ class QuestionController extends Controller
         $questions = Question::where("exam", $request->exam)->get();
         return view("examDetail", compact("exam", "questions"));
     }
+    public function scoreCompute(Request $request){
+        $count = 0;
+        $answer = [];
+        $countQ = (int)$request->countQuestion;
+
+        foreach($request->all() as $a){
+            array_push($answer, $a);
+        }
+
+        for($i = 1; $i < (sizeof($answer)-1); $i++){
+            if((string)$answer[$i] == "`1`")
+                $count++;
+        }
+        if(sizeof($answer) > 2)
+            $score = $count*(10/$countQ);
+        else
+            $score = 0;
+        return view("scoreCompute", compact("score", "count", "countQ"));
+    }
 }

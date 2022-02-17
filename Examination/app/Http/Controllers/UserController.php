@@ -14,6 +14,10 @@ class UserController extends Controller
         return view("register");
     }
 
+    public function login(){
+        return view("login");
+    }
+
     public function insertUser(Request $request){
         $message = [
             "username.required" => "Tên đăng nhập không được bỏ trống",

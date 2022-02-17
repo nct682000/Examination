@@ -16,10 +16,21 @@ class ExamController extends Controller
         return view("exams", compact("exams"));
     }
 
+    public function getAllTestExam(){
+        $testExam = Exam::where("active", 1)->get();
+        return view("testExam", compact("testExam"));
+    }
+
     public function getById($id){
         $exam = Exam::where("id", $id)->first();
         $questions = Question::where("exam", $id)->get();
         return view("examDetail", compact("exam", "questions"));
+    }
+
+    public function getByIdTest($id){
+        $exam = Exam::where("id", $id)->first();
+        $questions = Question::where("exam", $id)->get();
+        return view("testExamDetail", compact("exam", "questions"));
     }
 
     public function addExam(){

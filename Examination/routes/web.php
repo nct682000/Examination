@@ -21,9 +21,12 @@ Route::get('/', ["as"=>"home", "uses"=>"HomeController@index"]);
 
 //Exam Controller
 Route::get("exams", ["as"=>"exams", "uses"=>"ExamController@getAll"]);
+Route::get("testExam", ["as"=>"testExam", "uses"=>"ExamController@getAllTestExam"]);
 Route::get("exam/{examId}", ["as"=>"examDetail", "uses"=>"ExamController@getById"]);
+Route::get("examTest/{examId}", ["as"=>"testExamDetail", "uses"=>"ExamController@getByIdTest"]);
 Route::get("add-exam", ["as"=>"addExam", "uses"=>"ExamController@addExam"]);
 Route::post("insert-exam", ["as"=>"insertExam", "uses"=>"ExamController@insertExam"]);
+Route::post("score-compute", ["as"=>"scoreCompute", "uses"=>"QuestionController@scoreCompute"]);
 Route::get("hidden-exam/{examId}", ["as"=>"hiddenExam", "uses"=>"ExamController@hiddenExam"]);
 Route::get("active-exam/{examId}", ["as"=>"activeExam", "uses"=>"ExamController@activeExam"]);
 
@@ -31,5 +34,7 @@ Route::get("active-exam/{examId}", ["as"=>"activeExam", "uses"=>"ExamController@
 Route::post("insert-question", ["as"=>"insertQuestion", "uses"=>"QuestionController@insertQuestion"]);
 
 // User Controller
+
+Route::get("login", ["as"=>"login", "uses"=>"UserController@login"]);
 Route::get("register", ["as"=>"register", "uses"=>"UserController@register"]);
 Route::post("insert-user", ["as"=>"insertUser", "uses"=>"UserController@insertUser"]);

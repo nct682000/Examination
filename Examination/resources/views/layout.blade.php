@@ -30,7 +30,7 @@
 			    <ul class="navbar-nav">
 			    	<li class="nav-item">
 				      	<a class="nav-link font-weight-bold" href="{{route('exams')}}">
-				      		EXAM LIST
+				      		DANH SÁCH BÀI KIỂM TRA
 				      	</a>
 				    </li>
 				    <li class="nav-item">
@@ -44,14 +44,21 @@
 					        DANH SÁCH MÔN HỌC
 					    </a>
 				        <div class="dropdown-menu font-weight-bold">
-					        <a class="dropdown-item" href="#">Link 1</a>
-					        <a class="dropdown-item" href="#">Link 2</a>
-					        <a class="dropdown-item" href="#">Link 3</a>
+					        <a class="dropdown-item" href="#">Chuyên đề</a>
+					        <a class="dropdown-item" href="#">Lập trình Web</a>
+					        <a class="dropdown-item" href="#">Lập trình Java</a>
 				        </div>
 				     </li>
-					 <li>
-						 ĐĂNG KÍ
-					</li>
+					 <li class="nav-item">
+				      	<a class="nav-link font-weight-bold" href="{{route('testExam')}}">
+				      		GIAO DIỆN SINH VIÊN
+				      	</a>
+				    </li>
+					<li class="nav-item">
+				      	<a class="nav-link font-weight-bold" href="{{route('login')}}">
+				      		ĐĂNG KÝ
+				      	</a>
+				    </li>
 			  	</ul>
 			</nav>
 			@yield("content")

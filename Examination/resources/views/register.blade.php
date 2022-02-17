@@ -67,7 +67,7 @@
 		</div>
 		
 		<div class="form-group">
-			<button style="cursor: pointer;" type="submit" class="btn btn-primary font-weight-bold">ĐĂNG KÝ</button>
+			<button style="cursor: pointer;" type="submit" class="btn btn-primary btn-lg font-weight-bold">ĐĂNG KÝ</button>
 		</div>
 	</form>
 
